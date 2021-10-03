@@ -1,0 +1,249 @@
+$fontcolor: white;
+$fontfamily: "Poppins";
+
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $fontfamily;
+}
+
+body {
+ background-color: #0f0a17;
+  color: $fontcolor;
+}
+
+header {
+  background-color: #211631;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  height: 91px;
+
+  .toggle {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      font-weight: 400;
+      font-size: 12px;
+      padding-bottom: 0.5rem;
+      text-align: right;
+    }
+
+    .switchBtn {
+      align-self: flex-end;
+      position: relative;
+      display: inline-block;
+      width: 55px;
+      height: 25px;
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked {
+          + .slider {
+            &:before {
+              transform: translateX(26px); //hur långt cirkel förflyttar sig
+            }
+          }
+        }
+        &:focus {
+          + .slider {
+            box-shadow: 0 0 2px;
+          }
+        }
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #3b304b;
+        border-radius: 34px;
+        transition: 0.4s;
+        &:before {
+          //Cirkeln i slider
+          position: absolute;
+          content: "";
+          height: 17px;
+          width: 17px;
+          left: 4px;
+          bottom: 4px;
+          background-color: #0f0a17;
+          border-radius: 50%;
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 25px;
+  }
+}
+
+.spacename {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 1.5rem 0 1.5rem;
+
+  @media (min-width: 768px) {
+    width: 60%;
+    margin: 3rem auto 0 auto;
+  }
+
+  @media (min-width: 1280px) {
+    width: 40%;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  div {
+    background-color: #211631;
+    border-radius: 19px;
+    padding: 2.5rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        &.bgBorder {
+          border-bottom: 3px solid #bca0e6 !important;
+          outline: none;
+        }
+      }
+
+      label {
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        padding-bottom: 1.2rem;
+      }
+
+      #aliasName {
+        width: 100%;
+        height: 56px;
+        padding-left: 1.2rem;
+        border-radius: 3px;
+        border: none;
+        &::placeholder {
+          color: #898989;
+          font-size: 0.9rem;
+        }
+      }
+
+      #sendBtn {
+        flex: 0 0 auto;
+        margin-left: auto;
+        margin-top: 2rem;
+        background-color: #0b0712;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 10px;
+        color: $fontcolor;
+        cursor: pointer;
+        font-size: 0.7rem;
+
+        &:disabled {
+          color: #f0f0f066;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .welcome {
+    margin: 2.5rem 0 2.5rem 0;
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.container {
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  @media (min-width: 1280px) {
+    max-width: 1280px;
+    margin: auto;
+  }
+}
+
+.card {
+  background-color: #251e2f;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+  padding: 0 1.2rem 0 1.2rem;
+
+  @media (min-width: 768px) {
+    flex: 0 0 43%;
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 1280px) {
+    flex: 0 0 22%;
+    margin: 1rem 0;
+  }
+
+  .cardheading {
+    padding: 1.2rem 0;
+    font-weight: 500;
+  }
+
+  .carddate {
+    padding: 1.2rem 0;
+    font-weight: 500;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.dark {
+  //stylingen när man togglar från dark til lightmode nedan.
+  background-color: #fcfaff;
+  color: #212121;
+
+  header,
+  div {
+    background-color: #dfd6f2;
+  }
+
+  .slider {
+    &:before {
+      background-color: white !important;
+    }
+    background-color: #bca0e6 !important;
+  }
+
+  input {
+    &[type="submit"] {
+      background-color: #8d79b1 !important;
+    }
+    &:disabled {
+      background-color: #8d79b199 !important;
+      cursor: not-allowed;
+    }
+  }
+
+  .card {
+    background-color: #f5edff;
+    color: #212121;
+  }
+}
